@@ -26,9 +26,9 @@ Imports:
     utils,
     igraph,
     assertthat (>= 0.2.0),
-    remotes
+    remotes,
+    pkgbuild
 Suggests:
-    devtools,
     knitr,
     rmarkdown,
     testthat (>= 2.1.0),

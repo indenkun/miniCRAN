@@ -74,7 +74,7 @@ build the source package and add it to the miniCRAN repository.
 }
 \details{
 It uses the \code{remotes} package to download packages source from GitHub and the
-\code{devtools} package to build packages from source.
+\code{pkgbuild} package to build packages from source.
 }
 \note{
 Currently, adding packages from GitHub does not check nor download

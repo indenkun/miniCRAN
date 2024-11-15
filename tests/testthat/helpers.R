@@ -185,9 +185,9 @@ make_fake_package <- function(version = "0.1.0", base_path = tempdir()) {
   # Document the package
   
   suppressMessages(
-  devtools::document(fake_package, quiet = TRUE)
+  roxygen2::roxygenise(fake_package)
   )
 
   # Build the package
-  devtools::build(fake_package, path = base_path, quiet = TRUE)
+  pkgbuild::build(fake_package, dest_path = base_path, quiet = TRUE)
 }

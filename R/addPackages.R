@@ -265,7 +265,7 @@ addOldPackage <- function(pkgs = NULL, path = NULL, vers = NULL,
 #' miniCRAN repository.
 #'
 #' To build a package from source and then add it, use `build = TRUE`. Note that
-#' package development libraries and the `devtools` package must be installed on
+#' package development libraries and `pkgbuild` package must be installed on
 #' your system in order to build packages.
 #'
 #' @note Currently, adding local packages does not check nor download their
@@ -312,15 +312,15 @@ addLocalPackage <- function(pkgs = NULL, pkgPath = NULL, path = NULL,
   # build local package if needed
   if (isTRUE(build)) {
     warning("Building local packages is still being tested.")
-    if (requireNamespace("devtools", quietly = TRUE)) {
+    # if (requireNamespace("devtools", quietly = TRUE)) {
       lapply(pkgs, function(x) {
-        devtools::build(pkg = file.path(pkgPath, x), path = pkgPath,
+        pkgbuild::build(path = file.path(pkgPath, x), dest_path = pkgPath,
                         binary = ifelse(type == "source", FALSE, TRUE),
                         quiet = quiet)
       })
-    } else {
-      stop("To build packages, you must first install the 'devtools' package.")
-    }
+    # } else {
+    #   stop("To build packages, you must first install the 'devtools' package.")
+    # }
   }
   
   # get list of pre-built packages for each type, filter by pkgs to be added
@@ -382,7 +382,7 @@ addLocalPackage <- function(pkgs = NULL, pkgPath = NULL, path = NULL,
 #'  
 #' @details
 #' It uses the `remotes` package to download packages source from GitHub and the 
-#' `devtools` package to build packages from source.
+#' `pkgbuild` package to build packages from source.
 #'
 #' @note Currently, adding packages from GitHub does not check nor download 
 #'   their dependencies.
@@ -408,9 +408,9 @@ addGithubPackage <- function(repo = NULL, path = NULL,
     stop("path and repo must be specified.")
   }
   
-  if(!requireNamespace("devtools", quietly = TRUE) || !requireNamespace("remotes", quietly = TRUE)){
-    stop("you must first install the 'devtools' and 'remotes' package.")
-  }
+  # if(!requireNamespace("devtools", quietly = TRUE) || !requireNamespace("remotes", quietly = TRUE)){
+  #   stop("you must first install the 'devtools' and 'remotes' package.")
+  # }
   
   # Download the source from GitHub, describe the repository information, etc., 
   # and rebuild the source package.

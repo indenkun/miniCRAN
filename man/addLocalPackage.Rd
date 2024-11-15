@@ -60,7 +60,7 @@ miniCRAN repository.
 }
 \details{
 To build a package from source and then add it, use \code{build = TRUE}. Note that
-package development libraries and the \code{devtools} package must be installed on
+package development libraries and \code{pkgbuild} package must be installed on
 your system in order to build packages.
 }
 \note{
