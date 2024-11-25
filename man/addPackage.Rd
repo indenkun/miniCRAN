@@ -12,6 +12,7 @@ addPackage(
   Rversion = R.version,
   writePACKAGES = TRUE,
   deps = TRUE,
+  filters = NULL,
   quiet = FALSE
 )
 }
@@ -41,6 +42,8 @@ repository PACKAGES file.}
 
 \item{deps}{logical indicating whether the package dependencies should be
 added (default \code{TRUE}).}
+
+\item{filters}{passed to \link[utils:available.packages]{utils::available.packages}}
 
 \item{quiet}{If TRUE, suppress status messages (if any), and the progress bar
 during download.}
