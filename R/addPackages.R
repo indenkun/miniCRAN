@@ -87,7 +87,7 @@ checkVersions <- function(pkgs = NULL, path = NULL, type = "source",
 #'   
 addPackage <- function(pkgs = NULL, path = NULL, repos = getOption("repos"),
                        type = "source", Rversion = R.version,
-                       writePACKAGES = TRUE, deps = TRUE, quiet = FALSE) {
+                       writePACKAGES = TRUE, deps = TRUE, filters = NULL, quiet = FALSE) {
   if (is.null(path) || is.null(pkgs)) stop("path and pkgs must both be specified.")
   
   do_one <- function(t) {
@@ -98,7 +98,7 @@ addPackage <- function(pkgs = NULL, path = NULL, repos = getOption("repos"),
     if (deps) pkgs <- pkgDep(pkgs, repos = repos, type = t, Rversion = Rversion)
     
     makeRepo(pkgs = pkgs, path = path, repos = repos, type = t, Rversion = Rversion,
-             download = TRUE, writePACKAGES = FALSE, quiet = quiet)
+             download = TRUE, writePACKAGES = FALSE, filters = filters, quiet = quiet)
     
     if (length(prev)) {
       curr <- suppressWarnings(
